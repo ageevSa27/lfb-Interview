@@ -8,6 +8,7 @@ import model.Deal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -28,12 +29,13 @@ public class DealService {
 
     public DealResponse createDeal(DealRequest request) {
         Deal deal = new Deal();
+        deal.setCreatedAt(LocalDateTime.now());
         deal.setTitle(request.getTitle());
         deal.setDescription(request.getDescription());
         deal.setAmount(request.getAmount());
         deal.setCustomerName(request.getCustomerName());
         deal.setCustomerEmail(request.getCustomerEmail());
-        deal.setStatus(request.getStatus() != null ? request.getStatus() : "NEW");
+        deal.setStatus(request.getStatus());
 
         Deal savedDeal = dealRepository.saveDeal(deal);
         return convertToResponse(savedDeal);

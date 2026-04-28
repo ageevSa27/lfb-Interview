@@ -1,5 +1,6 @@
 package model;
 
+import com.example.deal.dto.DealStatus;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -16,7 +17,7 @@ public class Deal {
 
     private BigDecimal amount;
 
-    private String status; // NEW, IN_PROGRESS, COMPLETED, CANCELLED
+    private DealStatus status;
 
     private String customerName;
 

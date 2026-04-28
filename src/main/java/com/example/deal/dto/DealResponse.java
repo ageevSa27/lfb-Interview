@@ -11,7 +11,7 @@ public class DealResponse {
     private String title;
     private String description;
     private BigDecimal amount;
-    private String status;
+    private DealStatus status;
     private String customerName;
     private String customerEmail;
     private LocalDateTime createdAt;

@@ -25,5 +25,6 @@ public class DealRequest {
     @Email(message = "Невалидный email")
     private String customerEmail;
 
-    private String status;
+    @NotNull(message = "Status обязателен")
+    private DealStatus status;
 }

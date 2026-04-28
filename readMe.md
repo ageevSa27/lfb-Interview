@@ -13,7 +13,7 @@
   "amount": "number",
   "customerName": "string",
   "customerEmail": "string (email format)",
-  "status": "string (NEW, IN_PROGRESS, COMPLETED, CANCELLED)"
+  "status": "string (NEW, CLOSED)"
 }
 ```
 
