@@ -34,4 +34,10 @@ public class DealController {
         List<DealResponse> response = dealService.getAll();
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DealResponse> getDealById(@PathVariable Long id) {
+        DealResponse response = dealService.getDealById(id);
+        return ResponseEntity.ok(response);
+    }
 }

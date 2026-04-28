@@ -4,10 +4,7 @@ import com.github.javafaker.Faker;
 import model.Deal;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class DealRepository {
@@ -32,7 +29,11 @@ public class DealRepository {
         return STORAGE.get(id);
     }
 
-    public List<Deal> getAll(){
+    public List<Deal> getAll() {
         return new ArrayList<>(STORAGE.values());
+    }
+
+    public Optional<Deal> findById(Long id) {
+        return Optional.ofNullable(STORAGE.get(id));
     }
 }

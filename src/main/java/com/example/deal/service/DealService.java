@@ -2,6 +2,7 @@ package com.example.deal.service;
 
 import com.example.deal.dto.DealRequest;
 import com.example.deal.dto.DealResponse;
+import com.example.deal.ex.DealNotFoundException;
 import com.example.deal.repository.DealRepository;
 import model.Deal;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class DealService {
         this.dealRepository = dealRepository;
     }
 
-    public List<DealResponse> getAll(){
+    public List<DealResponse> getAll() {
         var deals = dealRepository.getAll();
         return deals.stream().map(this::convertToResponse).toList();
     }
@@ -37,6 +38,7 @@ public class DealService {
         Deal savedDeal = dealRepository.saveDeal(deal);
         return convertToResponse(savedDeal);
     }
+
     private DealResponse convertToResponse(Deal deal) {
         DealResponse response = new DealResponse();
         response.setId(deal.getId());
@@ -50,4 +52,11 @@ public class DealService {
         response.setUpdatedAt(deal.getUpdatedAt());
         return response;
     }
+
+    public DealResponse getDealById(Long id) {
+        Deal deal = dealRepository.findById(id)
+                .orElseThrow(() -> new DealNotFoundException("Deal not found with id: " + id));
+        return convertToResponse(deal);
+    }
+
 }
